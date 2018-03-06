@@ -1,8 +1,9 @@
 imagecrawling
 =========
 
-*A imagecrawlington command line program in Python.*
+*A command line program in Python.*
 
 
 Purpose
 -------
+Is able to download images

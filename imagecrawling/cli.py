@@ -51,7 +51,11 @@ def getImagesFromSoup(url, soup):
 def crawlUrlsAndImagesForNetLocation(url, depth=-1):
     urls = set()
     images = set()
-    new_urls, images = getUrlsAndImagesForNetLocation(url)
+    try:
+        new_urls, images = getUrlsAndImagesForNetLocation(url)
+    except Exception as e:
+        print("Problem while scraping ", url)
+        print(e)
     urls |= new_urls
     current_depth = 0
     while depth<0 or depth>=current_depth:
@@ -67,7 +71,7 @@ def crawlUrlsAndImagesForNetLocation(url, depth=-1):
                   current_new_urls, current_new_images = getUrlsAndImagesForNetLocation(current_url)
                 except Exception as e:
                   print("Problem while scraping ", current_url)
-                  print e
+                  print(e)
                 for i in current_new_images:
                   print("Found ", i)
                 new_urls |= current_new_urls
